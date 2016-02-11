@@ -27,17 +27,6 @@ if ($envMode = getenv('APP_ENV')) {
     $envMode = 'prod';
 }
 
-	//Config for Uber
-    $uberConfig['server_token'] = getenv('Uber_Server_Token');
-    $uberConfig['client_id'] = getenv('Uber_Client_Id');
-    $uberConfig['app_id'] = getenv('Uber_App_Id');
-
-	if ($envMode = getenv('APP_ENV')) {
-		$uberConfig['use_sandbox'] = true;
-	} else {
-	    $uberConfig['use_sandbox'] = false;
-	}
-
 // init and set app settings
 $app = new Application(array(
     'environment'   => $envMode,
@@ -46,9 +35,6 @@ $app = new Application(array(
     'startTime'     => $startTime
 ));
 
-$app['uber_config']	= $uberConfig;
-$app['citymapper_key'] = getenv('Citymapper_key');
-$app['hailo_key'] = getenv('Hailo_key');
 
 // custom default errors
 require __DIR__ . '/config/errors.php';
